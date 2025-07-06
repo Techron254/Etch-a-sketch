@@ -1,0 +1,56 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgba(1, 1, 1, 0.9);
+
+}
+h1{
+     font-family: "Silkscreen", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: rgb(70, 255, 13);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.buttons{
+    text-align: center;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    width:70%;
+    margin: 1rem auto;
+    gap: 2vw;
+}
+#button-one{
+    font-family: "Electrolize", sans-serif;
+    border: 2px solid rgb(50, 206, 234);
+    padding: 10px;
+    color: rgb(50, 206, 234);
+    background-color: rgba(1, 1, 1, 0.9);
+    border-radius: 0.3rem;
+    margin-right: 0.3rem;
+    flex-grow: 1;
+}
+#button-two{
+    font-family: "Electrolize", sans-serif;
+    border: 2px solid rgb(233, 16, 60);
+    color: rgb(233, 16, 60);
+    background-color: rgba(1, 1, 1, 0.9);
+    border-radius: 0.3rem;
+    padding: 10px;
+    flex-grow: 1;
+}
+#button-three{
+    font-family: "Electrolize", sans-serif;
+    border: 2px solid rgb(70, 255, 13);
+    color: rgb(70, 255, 13);
+    background-color: rgba(1, 1, 1, 0.9);
+    border-radius: 0.3rem;
+    padding: 10px;
+    flex-grow: 3;
+}
