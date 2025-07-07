@@ -6,7 +6,7 @@
 }
 body{
     background-color: rgba(1, 1, 1, 0.9);
-
+    background-image: url(https://64.media.tumblr.com/9c738aace476b66e13e2c1d9918a2a9a/2dfdaa3dd905833e-25/s1280x1920/169850162852619f241f9512cb73ebf7275e64f0.png);
 }
 h1{
      font-family: "Silkscreen", sans-serif;
@@ -61,7 +61,5 @@ h1{
     display: flex;
     flex-wrap: wrap;
     overflow: hidden;
-    background-color: rgb(0, 0, 0);
-}
-.cell{
+    background-color: rgba(0, 0, 0, 0.998);
 }
