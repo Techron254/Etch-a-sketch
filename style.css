@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: rgba(1, 1, 1, 0.9);
+    background-color: rgba(1, 1, 1);
     background-image: url(https://64.media.tumblr.com/9c738aace476b66e13e2c1d9918a2a9a/2dfdaa3dd905833e-25/s1280x1920/169850162852619f241f9512cb73ebf7275e64f0.png);
 }
 h1{
@@ -30,7 +30,7 @@ h1{
     font-family: "Electrolize", sans-serif;
     color: rgb(225, 218, 218);
     border: 2px solid rgb(225, 218, 218);
-    background-color: rgba(1, 1, 1, 0.9);
+    background-color: rgba(1, 1, 1);
     padding: 10px;
     border-radius: 0.3rem;
     flex-grow: 1;
@@ -41,7 +41,7 @@ h1{
     border: 2px solid rgb(50, 206, 234);
     padding: 10px;
     color: rgb(50, 206, 234);
-    background-color: rgba(1, 1, 1, 0.9);
+    background-color: rgba(1, 1, 1);
     border-radius: 0.3rem;
     margin-right: 0.3rem;
     flex-grow: 1;
@@ -50,7 +50,7 @@ h1{
     font-family: "Electrolize", sans-serif;
     border: 2px solid rgb(233, 16, 60);
     color: rgb(233, 16, 60);
-    background-color: rgba(1, 1, 1, 0.9);
+    background-color: rgba(1, 1, 1);
     border-radius: 0.3rem;
     padding: 10px;
     flex-grow: 1;
@@ -59,7 +59,7 @@ h1{
     font-family: "Electrolize", sans-serif;
     border: 2px solid rgb(70, 255, 13);
     color: rgb(70, 255, 13);
-    background-color: rgba(1, 1, 1, 0.9);
+    background-color: rgba(1, 1, 1);
     border-radius: 0.3rem;
     padding: 10px;
     flex-grow: 2;
@@ -74,4 +74,89 @@ h1{
 .erase{
     background-color: blue;
     border: 3px solid red;
+}
+/* ---- variables you can change ---- */
+:root {
+  --toggle-width: 3.6rem;        /* whole control width  */
+  --toggle-height: 1.8rem;       /* whole control height */
+  --toggle-pad: 0.2rem;          /* space around knob    */
+  --toggle-on:  #0d6efd;         /* accent color when ON */
+  --toggle-off: #d0d7de;         /* track color when OFF */
+  --knob-size: calc(var(--toggle-height) - 2 * var(--toggle-pad));
+  --speed: 0.25s;
+}
+
+/* ---- reset / base ---- */
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  gap: 0.5rem;
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  font-family: 'electrolize', sans-serif;
+  border: 2px solid rgb(70, 255, 13);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  background-color: rgba(1, 1, 1);
+}
+
+/* visually hide the real checkbox */
+.toggle__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  border: none;
+}
+
+/* ---- track ---- */
+.toggle__slider {
+  position: relative;
+  width: var(--toggle-width);
+  height: var(--toggle-height);
+  background: var(--toggle-off);
+  border-radius: var(--toggle-height);
+  transition: background var(--speed);
+  border: none;
+}
+
+/* ---- knob ---- */
+.toggle__slider::before {
+  content: "";
+  position: absolute;
+  top: var(--toggle-pad);
+  left: var(--toggle-pad);
+  width: var(--knob-size);
+  height: var(--knob-size);
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,.3);
+  transition: transform var(--speed) cubic-bezier(.4,0,.2,1);
+  background: none;
+}
+
+/* ---- states ---- */
+.toggle__input:checked + .toggle__slider {
+  background: var(--toggle-on);
+}
+.toggle__input:checked + .toggle__slider::before {
+  transform: translateX(calc(var(--toggle-width) - var(--toggle-height)));
+}
+
+/* ---- focus ring for keyboard users ---- */
+.toggle__input:focus-visible + .toggle__slider {
+  outline: 2px solid var(--toggle-on);
+  outline-offset: 2px;
+}
+
+/* ---- optional: disabled ---- */
+.toggle__input:disabled + .toggle__slider {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.toggle p{
+    color: white;
 }

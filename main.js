@@ -12,42 +12,40 @@ function CreateGridCells(cellsNumber){
         cell.style.cssText = 'border: 1px solid rgba(63, 62, 62, 0.77); flex-grow: 1; box-sizing: border-box;';
         cell.style.width = `${((1/cellsNumber) * 100)}%`;
         cell.style.height = `${((1/cellsNumber)*100)}%`;
-        cell.style.backgroundColor ='rgba(0, 0, 0, 0.998)';
+        cell.style.backgroundColor ='rgba(0, 0, 0)';
         canvas.appendChild(cell);
 
     }
 }
+ 
+CreateGridCells(cellsNumber);
 
- CreateGridCells(cellsNumber);
-
+const allCells = canvas.querySelectorAll('.cell');
  
  function hover() {
-  let allCells = canvas.querySelectorAll('div');
-    allCells.forEach((cell) =>
-    {
-    cell.addEventListener('mouseenter', () => {
+    allCells.forEach((cell) =>{
+      cell.addEventListener('mouseover', () => {
+      if (isMouseDown === false) {
         cell.style.backgroundColor = 'rgb(115, 190, 115)';
-        })
-    });
+        }}); 
+      });
   }
+    
+let isMouseDown = false;
+document.addEventListener('mousedown', () => {
+  isMouseDown = true; 
+});
+document.addEventListener('mouseup', () => {      
+  isMouseDown = false; 
+});
 
-    let isMouseDown = false;
-    document.addEventListener('mousedown', () => {
-      isMouseDown = true; 
-    });
-    document.addEventListener('mouseup', () => {      
-      isMouseDown = false; 
-    });
-  function clickAndDrag() {
-    let allCells = canvas.querySelectorAll('div'); 
-    allCells.forEach((cell) => {
-      cell.addEventListener('mouseenter', () => {
-        if (isMouseDown) {
+function clickAndDrag() {
+  allCells.forEach((cell) => {
+        cell.addEventListener('mouseenter', () => {
+        while (isMouseDown) {
         cell.style.backgroundColor = 'rgb(115, 190, 115)';
-      }});
-    });
-  }
-  
+      }})});
+}
 const createNewGridButton = document.querySelector('#create-grid');
   createNewGridButton.addEventListener('click', () => {
     cellsNumber = prompt('Enter the number of squares you wish per side for the new grid (max: 100)');
@@ -56,7 +54,7 @@ const createNewGridButton = document.querySelector('#create-grid');
       alert("Please input a number between 1 to 100");
     }
     else {
-    let allCells = canvas.querySelectorAll('div');
+
     allCells.forEach((div) => div.remove());
     
     CreateGridCells(cellsNumber);
@@ -65,7 +63,7 @@ const createNewGridButton = document.querySelector('#create-grid');
 
 const resetGridButton = document.querySelector('#reset-button');
   resetGridButton.addEventListener('click', () => {
-     let allCells = canvas.querySelectorAll('div');
+
       allCells.forEach((div) => div.remove());
 
       CreateGridCells(cellsNumber);
@@ -75,14 +73,14 @@ const eraserButton = document.querySelector('#eraser');
   eraserButton.addEventListener('click', e =>  erase());
 
 function erase(){
-    let allCells = canvas.querySelectorAll('div');
-    allCells.forEach((cell) =>{
-        cell.removeEventListener('mouseenter', () => {
+      allCells.forEach((cell) =>{
+        cell.removeEventListener('mouseover', () => {
         cell.style.backgroundColor = 'rgb(115, 190, 115)';
         });
-    cell.addEventListener('mouseenter', () => {
-      if (cell.style.backgroundColor != "rgba(0, 0, 0, 0.998)"){
-        cell.style.backgroundColor ='rgba(0, 0, 0, 0.998)';
+        
+    cell.addEventListener('mouseover', () => {
+      if (cell.style.backgroundColor != "rgba(0, 0, 0)"){
+        cell.style.backgroundColor ='rgba(0, 0, 0)';
 }})});
 }
 
@@ -91,11 +89,7 @@ hoverButton.addEventListener('click', e => hover());
 
 const clickAndDragButton = document.querySelector('#click-and-drag');
 clickAndDragButton.addEventListener('click', e => {
-  let allCells = canvas.querySelectorAll('div');
   allCells.forEach((cell) => {
-    cell.removeEventListener('mouseenter', () => {
-      cell.style.backgroundColor = 'rgb(115, 190, 115)';
-    });
-    clickAndDrag();
+  clickAndDrag();
   });
 });
