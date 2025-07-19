@@ -32,7 +32,8 @@ h1{
     border: 2px solid rgb(225, 218, 218);
     background-color: rgba(1, 1, 1, 0.9);
     padding: 10px;
-    border-radius: 0.3rem; */
+    border-radius: 0.3rem;
+    flex-grow: 1;
 
 }
 #create-grid{
@@ -61,7 +62,7 @@ h1{
     background-color: rgba(1, 1, 1, 0.9);
     border-radius: 0.3rem;
     padding: 10px;
-    flex-grow: 3;
+    flex-grow: 2;
 }
 .canvas{
     border: 2px solid rgb(70, 255, 13);
